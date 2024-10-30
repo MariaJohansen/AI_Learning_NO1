@@ -1,0 +1,42 @@
+# Makefile for AI_Learning_NO1: Learning AI Platforms in Education
+
+# Variables
+VENV_DIR := .venv
+REQUIREMENTS := requirements.txt
+
+# Setup virtual environment and install dependencies
+setup:
+	python3 -m venv $(VENV_DIR)
+	$(VENV_DIR)/bin/pip install --upgrade pip
+	$(VENV_DIR)/bin/pip install -r $(REQUIREMENTS)
+
+# Install dependencies
+install:
+	$(VENV_DIR)/bin/pip install -r $(REQUIREMENTS)
+
+# Run tests to verify AI platform functionality
+test:
+	$(VENV_DIR)/bin/python -m unittest discover -s tests
+
+# Linting (using flake8 as an example)
+lint:
+	$(VENV_DIR)/bin/flake8 src
+
+# Clean up virtual environment and temporary files
+clean:
+	rm -rf $(VENV_DIR)
+	find . -name "__pycache__" -exec rm -rf {} +
+
+# Run educational example scripts (customize as needed)
+run:
+	$(VENV_DIR)/bin/python src/educational_example.py
+
+# Display available commands
+help:
+	@echo "Available commands:"
+	@echo "  setup      Set up virtual environment and install dependencies"
+	@echo "  install    Install dependencies"
+	@echo "  test       Run tests to verify AI platform functionality"
+	@echo "  lint       Run linter for code style checks"
+	@echo "  clean      Clean up virtual environment and temp files"
+	@echo "  run        Run an example educational AI platform script"
